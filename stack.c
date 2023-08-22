@@ -29,10 +29,15 @@ int pop(stack_m *head)
 	if (head == NULL)
 		exit(EXIT_FAILURE);
 	
-	return (0);
+	temp = head;
+	head = temp->next;
+	temp->next->prev = NULL;
+	temp->next = NULL;
+	free(temp);
+	exit(EXIT_SUCCESS);
 }
 
-char *peak()
+int peak(stack_m *head)
 {
 	return ("Top");
 }
