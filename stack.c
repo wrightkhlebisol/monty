@@ -39,5 +39,9 @@ int pop(stack_m *head)
 
 int peak(stack_m *head)
 {
+	if (head == NULL)
+		exit(EXIT_FAILURE);
+
+	return (head->n);
 	return ("Top");
 }
