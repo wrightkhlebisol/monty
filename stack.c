@@ -43,5 +43,4 @@ int peak(stack_m *head)
 		exit(EXIT_FAILURE);
 
 	return (head->n);
-	return ("Top");
 }
