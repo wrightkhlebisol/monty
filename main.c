@@ -9,16 +9,27 @@
  */
 int main(int argc, char **argv)
 {
+	FILE *fp = NULL;
+	int MAX_SIZE = 128;
+	char chunk[MAX_SIZE];
+
 	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
-	// Check if valid file
 	// Open and read file here
-	// read each line
-	// Add each line to a stack
+	fp = fopen(argv[1], "r");
+	if (fp == NULL)
+		exit(EXIT_FAILURE);
+
+	while(fgets(chunk, MAX_SIZE, fp) != NULL)
+		// read each line
+		fputs(chunk, stdout);
+		// Add each line to a stack
+
+	fclose(fp);
 	// Pop and interpret
 	exit(1);
 }
