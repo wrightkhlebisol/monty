@@ -33,8 +33,9 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int push(stack_t *head, int n);
-int pop(stack_t *head);
-int peak(stack_t *head);
+extern stack_t **head;
+void push(int n);
+void pop(void);
+void peak(void);
 
 #endif /** _STACKS_QUEUES_ */
