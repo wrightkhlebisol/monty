@@ -16,7 +16,7 @@ typedef struct stack_s
 	int n;
 	struct stack_s *prev;
 	struct stack_s *next;
-} stack_m;
+} stack_t;
 
 /**
  * struct instruction_s - opcode and its function
@@ -29,11 +29,11 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_m **stack, unsigned int line_number);
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int push(stack_m *head, int n);
-int pop(stack_m *head);
-int peak(stack_m *head);
+int push(stack_t *head, int n);
+int pop(stack_t *head);
+int peak(stack_t *head);
 
 #endif /** _STACKS_QUEUES_ */
