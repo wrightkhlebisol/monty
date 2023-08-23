@@ -19,16 +19,20 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	// Open and read file here
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
 		exit(EXIT_FAILURE);
 
 	while(fgets(chunk, MAX_SIZE, fp) != NULL)
-		// read each line
-		fputs(chunk, stdout);
+	{
+		char *token_s = strtok(chunk, "\t\r\n ");
+		while(token_s)
+		{
+			printf("%s\n", token_s);
+			token_s = strtok(NULL, "\t\r\n ");
+		}
 		// Add each line to a stack
-
+	}
 	fclose(fp);
 	// Pop and interpret
 	exit(1);
