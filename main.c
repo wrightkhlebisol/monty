@@ -14,7 +14,7 @@ void exec_opcode(char *cmd, stack_t **head, unsigned int line_number)
 
 	instruction_t opcodes[] = {
 		{"push", push},
-		{"pall", pall}
+		{"pall", pall},
 		{NULL, NULL}
 	};
 
