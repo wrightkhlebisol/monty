@@ -34,6 +34,9 @@ void push(stack_t **head, unsigned int line_number)
 {
 	int num;
 	char *cmd_arg;
+	stack_t *temp = *head;
+	stack_t *new_node = malloc(sizeof(stack_t));
+
 
 	if (head == NULL)
 	{
@@ -50,9 +53,6 @@ void push(stack_t **head, unsigned int line_number)
 	}
 
 	num = atoi(cmd_arg);
-
-	stack_t *temp = *head;
-	stack_t *new_node = malloc(sizeof(stack_t));
 
 	if (new_node == NULL)
 	{
