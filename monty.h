@@ -34,8 +34,6 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t *head;
-
 void exec_opcode(char *cmd, stack_t **head, unsigned int line_number);
 int check_num(char *num);
 void free_head(stack_t *head);
@@ -43,5 +41,6 @@ void free_head(stack_t *head);
 void push(stack_t **head, unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);
 void pop(stack_t **head, unsigned int line_number);
+void pint(stack_t **head, unsigned int line_number);
 
 #endif /** HEADER_FILE */

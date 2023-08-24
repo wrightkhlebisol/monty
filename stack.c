@@ -41,12 +41,11 @@ void push(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	cmd_arg = strtok(NULL, "\t\n ");
+	cmd_arg = strtok(NULL, " \t\r\n");
 
 	if (cmd_arg == NULL || check_num(cmd_arg) == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		free(*head);
 		exit(EXIT_FAILURE);
 	}
 
@@ -67,6 +66,7 @@ void push(stack_t **head, unsigned int line_number)
 	if (*head != NULL)
 		temp->prev = new_node;
 	*head = new_node;
+
 }
 
 /**
@@ -109,4 +109,23 @@ void pop(stack_t **head, unsigned int line_number)
 	temp->prev = NULL;
 	temp->next = NULL;
 	free(temp);
+}
+
+/**
+ * pint - prints element at the top of the stack
+ * @head: pointer to head node pointer
+ * @line_number: the line number read
+ *
+ * Return: void
+ */
+void pint(stack_t **head, unsigned int line_number)
+{
+
+	if ((*head) == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%d\n", (*head)->n);
 }

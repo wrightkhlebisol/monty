@@ -1,7 +1,5 @@
 #include "monty.h"
 
-stack_t *head = NULL;
-
 /**
  * exec_opcode - finds opcode that matches with command
  * @cmd: the command para
@@ -18,6 +16,7 @@ void exec_opcode(char *cmd, stack_t **head, unsigned int line_number)
 		{"push", push},
 		{"pall", pall},
 		{"pop", pop},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
@@ -52,6 +51,7 @@ int main(int argc, char **argv)
 	int MAX_SIZE = 1024;
 	char chunk[MAX_SIZE];
 	unsigned int line_num = 1;
+	stack_t *head = NULL;
 
 	if (argc != 2)
 	{
@@ -68,7 +68,7 @@ int main(int argc, char **argv)
 
 	while (fgets(chunk, MAX_SIZE, fp) != NULL)
 	{
-		char *token_s = strtok(chunk, "\t\n ");
+		char *token_s = strtok(chunk, "\t\r\n ");
 
 		if (token_s == NULL)
 		{
