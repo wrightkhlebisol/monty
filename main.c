@@ -1,6 +1,42 @@
 #include "monty.h"
 
 /**
+ * exec_opcode - finds the opcode that matches with the instruction and executes the function
+ * @cmd: the command para
+ * @head: head pointer
+ * @line_number: number of lines read/executed
+ *
+ * Return: void
+ */
+void exec_opcode(char *cmd, stack_t **head, unsigned int line_number)
+{
+	int i = 0;
+
+	intruction_t opcodes[] = {
+		{"push", opcode_push},
+		{"pall", opcode_pall}
+		{NULL, NULL}
+	};
+
+	if (*cmd == '#')
+	{
+		return;
+	}
+
+	while (opcodes[i].opcode != NULL)
+	{
+		if (strstr(cmd, opcodes[i].opcode) == cmd)
+		{
+			opcodes[i].f(head, line_number);
+			return;
+		}
+		i++;
+	}
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, cmd);
+	exit(EXIT_FAILURE);
+}
+
+/**
  * main - Start the program
  * @argc: Argument count
  * @argv: Argument Value(s)
@@ -10,21 +46,13 @@
 int main(int argc, char **argv)
 {
 	FILE *fp = NULL;
-	int MAX_SIZE = 128, lineht = 0;
+	int MAX_SIZE = 1024;
 	char chunk[MAX_SIZE];
-	instruction_t opcodes[] = {
-		{"push", push},
-		{"pop", pop},
-/*		{"pall", pall},
-		{"pint", pint},
-		{"swap", swap},
-		{"add", add},
-*/		NULL
-	};
+	unsigned int line_num = 1;
 
 	if (argc != 2)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -38,25 +66,14 @@ int main(int argc, char **argv)
 	while(fgets(chunk, MAX_SIZE, fp) != NULL)
 	{
 		char *token_s = strtok(chunk, "\t\r\n ");
-		int i = 0;
-
-		while (opcodes[i].opcode != NULL )
+		if (token_s == NULL)
 		{
-			if (strcmp(token_s, opcodes[i].opcode) == 0)
-			{
-				opcodes[i].f(head, lineht);
-			}
-			i++;
+			line_num++;
+			continue;
 		}
-
-		
-		token_s = strtok(NULL, "\t\r\n ");
-		printf("%s\n", token_s);
-		
-		lineht++;
-		// Add each line to a stack
+		exec_opcode(token_s, &head, line_num);
+		line_num++;
 	}
 	fclose(fp);
-	// Pop and interpret
-	exit(1);
+	return (0);
 }

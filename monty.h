@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -34,8 +35,8 @@ typedef struct instruction_s
 } instruction_t;
 
 extern stack_t **head;
-void push(int n);
-void pop(void);
-void peak(void);
+extern char *token_s;
+void push(stack_t **head, unsigned int line_number);
+void pall(stack_t **head, unsigned int line_number);
 
 #endif /** _STACKS_QUEUES_ */
