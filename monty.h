@@ -35,7 +35,6 @@ typedef struct instruction_s
 } instruction_t;
 
 extern stack_t **head;
-extern char *token_s;
 void push(stack_t **head, unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);
 
