@@ -1,4 +1,29 @@
-#include "monty.h"
+#include "mointy.h"
+
+/**
+ * check_num - checks if argument is a number or not, covers digits as well
+ * @num: number argument
+ *
+ * Return: 1 (number or digit), 0 (not a number nor digit)
+ */
+int check_num(char *num)
+{
+	if (*num == '-')
+	{
+		num++;
+	}
+	if (*num == '\0')
+		return (0);
+	while (*num != '\0')
+	{
+		if (*num < '0' || *num > '9')
+			return (0);
+		return (1);
+		num++;
+	}
+	return (1)
+}
+
 /**
  * push - Put item at top of stack
  * @head
@@ -8,13 +33,24 @@
  */
 void push(stack_t **head, unsigned int line_number)
 {
-	if (token_s == NULL || !isdigit(*token_s))
+	int num;
+	char *cmd_arg;
+
+	if (head == NULL)
+	{
+		fprintf(stderr, "Stack is not present");
+		exit(EXIT_FAILURE);
+	}
+
+	cmd_arg = strtok(NULL, "\t\r\n ");
+
+	if (cmd_arg == NULL || check_num(cmd_arg) == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	int num = atoi(token_s);
+	int num = atoi(cmd_arg);
 	
 	stack_t *temp = *head;
 	stack_t *new_node = malloc(sizeof(stack_t));
