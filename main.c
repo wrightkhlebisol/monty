@@ -13,8 +13,8 @@ void exec_opcode(char *cmd, stack_t **head, unsigned int line_number)
 	int i = 0;
 
 	intruction_t opcodes[] = {
-		{"push", opcode_push},
-		{"pall", opcode_pall}
+		{"push", push},
+		{"pall", pall}
 		{NULL, NULL}
 	};
 
