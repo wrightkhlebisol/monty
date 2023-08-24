@@ -34,9 +34,7 @@ void push(stack_t **head, unsigned int line_number)
 {
 	int num;
 	char *cmd_arg;
-/**
-	printf("%p\n", &head);
-*/
+
 	if (head == NULL)
 	{
 		fprintf(stderr, "Stack is not present\n");
@@ -44,9 +42,7 @@ void push(stack_t **head, unsigned int line_number)
 	}
 
 	cmd_arg = strtok(NULL, "\t\n ");
-/**
-	printf("%s\n", cmd_arg);
-*/
+
 	if (cmd_arg == NULL || check_num(cmd_arg) == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
@@ -55,7 +51,7 @@ void push(stack_t **head, unsigned int line_number)
 	}
 
 	num = atoi(cmd_arg);
-	
+
 	stack_t *temp = *head;
 	stack_t *new_node = malloc(sizeof(stack_t));
 
@@ -64,20 +60,18 @@ void push(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-
 	new_node->n = num;
 	new_node->prev = NULL;
 	new_node->next = *head;
 
 	if (*head != NULL)
-	{
 		temp->prev = new_node;
-	}
 	*head = new_node;
 }
 
 /**
  * pall - prints all elements present in the stack
+ * @head: pointer to the head node pointer
  * @line_number: line number read
  *
  * Return: void
@@ -116,13 +110,3 @@ void pop(stack_t **head, unsigned int line_number)
 	temp->next = NULL;
 	free(temp);
 }
-
-/**
-void peak(void)
-{
-	if (head == NULL)
-		exit(EXIT_FAILURE);
-
-	printf("%d\n", (*head)->n);
-}
-*/

@@ -3,7 +3,7 @@
 stack_t *head = NULL;
 
 /**
- * exec_opcode - finds the opcode that matches with the instruction and executes the function
+ * exec_opcode - finds opcode that matches with command
  * @cmd: the command para
  * @head: head pointer
  * @line_number: number of lines read/executed
@@ -66,17 +66,16 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	while(fgets(chunk, MAX_SIZE, fp) != NULL)
+	while (fgets(chunk, MAX_SIZE, fp) != NULL)
 	{
 		char *token_s = strtok(chunk, "\t\n ");
+
 		if (token_s == NULL)
 		{
 			line_num++;
 			continue;
 		}
-/**
-		printf("%s\n", token_s);
-*/
+/*		printf("%s\n", token_s); */
 		exec_opcode(token_s, &head, line_num);
 		line_num++;
 	}
