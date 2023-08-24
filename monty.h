@@ -38,6 +38,7 @@ extern stack_t *head;
 
 void exec_opcode(char *cmd, stack_t **head, unsigned int line_number);
 int check_num(char *num);
+void free_head(stack_t *head);
 
 void push(stack_t **head, unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);

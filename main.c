@@ -80,6 +80,7 @@ int main(int argc, char **argv)
 		exec_opcode(token_s, &head, line_num);
 		line_num++;
 	}
+	free_head(head);
 	fclose(fp);
 	return (0);
 }
