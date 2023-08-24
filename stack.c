@@ -21,7 +21,7 @@ int check_num(char *num)
 		return (1);
 		num++;
 	}
-	return (1)
+	return (1);
 }
 
 /**
