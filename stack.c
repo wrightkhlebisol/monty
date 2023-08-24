@@ -1,4 +1,4 @@
-#include "mointy.h"
+#include "monty.h"
 
 /**
  * check_num - checks if argument is a number or not, covers digits as well
