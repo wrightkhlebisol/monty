@@ -42,7 +42,7 @@ void push(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	cmd_arg = strtok(NULL, "\t\r\n ");
+	cmd_arg = strtok(NULL, "\t\n ");
 
 	if (cmd_arg == NULL || check_num(cmd_arg) == 0)
 	{

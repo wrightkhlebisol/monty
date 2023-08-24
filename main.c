@@ -49,6 +49,7 @@ int main(int argc, char **argv)
 	int MAX_SIZE = 1024;
 	char chunk[MAX_SIZE];
 	unsigned int line_num = 1;
+	stack_t *head = NULL;
 
 	if (argc != 2)
 	{
@@ -65,7 +66,7 @@ int main(int argc, char **argv)
 
 	while(fgets(chunk, MAX_SIZE, fp) != NULL)
 	{
-		char *token_s = strtok(chunk, "\t\r\n ");
+		char *token_s = strtok(chunk, "\t\n ");
 		if (token_s == NULL)
 		{
 			line_num++;
