@@ -19,6 +19,11 @@ void exec_opcode(char *cmd, stack_t **head, unsigned int line_number)
 		{"pint", pint},
 		{"swap", swap},
 		{"nop", nop},
+		{"add", add},
+		{"sub", sub},
+		{"div", op_div},
+		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 
