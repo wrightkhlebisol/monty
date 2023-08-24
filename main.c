@@ -48,7 +48,6 @@ void exec_opcode(char *cmd, stack_t **head, unsigned int line_number)
 int main(int argc, char **argv)
 {
 	FILE *fp = NULL;
-	int MAX_SIZE = 1024;
 	char chunk[MAX_SIZE];
 	unsigned int line_num = 1;
 	stack_t *head = NULL;
