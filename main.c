@@ -17,6 +17,8 @@ void exec_opcode(char *cmd, stack_t **head, unsigned int line_number)
 		{"pall", pall},
 		{"pop", pop},
 		{"pint", pint},
+		{"swap", swap},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
