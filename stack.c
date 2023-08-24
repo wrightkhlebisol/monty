@@ -18,7 +18,6 @@ int check_num(char *num)
 	{
 		if (*num < '0' || *num > '9')
 			return (0);
-		return (1);
 		num++;
 	}
 	return (1);
@@ -35,18 +34,23 @@ void push(stack_t **head, unsigned int line_number)
 {
 	int num;
 	char *cmd_arg;
-
+/**
+	printf("%p\n", &head);
+*/
 	if (head == NULL)
 	{
-		fprintf(stderr, "Stack is not present");
+		fprintf(stderr, "Stack is not present\n");
 		exit(EXIT_FAILURE);
 	}
 
 	cmd_arg = strtok(NULL, "\t\n ");
-
+/**
+	printf("%s\n", cmd_arg);
+*/
 	if (cmd_arg == NULL || check_num(cmd_arg) == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		free(*head);
 		exit(EXIT_FAILURE);
 	}
 
@@ -63,20 +67,16 @@ void push(stack_t **head, unsigned int line_number)
 
 	new_node->n = num;
 	new_node->prev = NULL;
+	new_node->next = *head;
 
-	if (head == NULL)
+	if (*head != NULL)
 	{
-		new_node->next = NULL;
-		*head = new_node;
-		exit(EXIT_SUCCESS);
+		temp->prev = new_node;
 	}
-	new_node->next = temp;
-	temp->prev = new_node;
 	*head = new_node;
-	exit(EXIT_SUCCESS);
 }
 
-void pall(stack_t **head, unsigned int line_number)
+void pall(stack_t **head, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *temp = *head;
 

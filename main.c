@@ -1,5 +1,7 @@
 #include "monty.h"
 
+stack_t *head = NULL;
+
 /**
  * exec_opcode - finds the opcode that matches with the instruction and executes the function
  * @cmd: the command para
@@ -25,7 +27,7 @@ void exec_opcode(char *cmd, stack_t **head, unsigned int line_number)
 
 	while (opcodes[i].opcode != NULL)
 	{
-		if (strstr(cmd, opcodes[i].opcode) == cmd)
+		if (strcmp(opcodes[i].opcode, cmd) == 0)
 		{
 			opcodes[i].f(head, line_number);
 			return;
@@ -49,7 +51,6 @@ int main(int argc, char **argv)
 	int MAX_SIZE = 1024;
 	char chunk[MAX_SIZE];
 	unsigned int line_num = 1;
-	stack_t *head = NULL;
 
 	if (argc != 2)
 	{
@@ -72,6 +73,9 @@ int main(int argc, char **argv)
 			line_num++;
 			continue;
 		}
+/**
+		printf("%s\n", token_s);
+*/
 		exec_opcode(token_s, &head, line_num);
 		line_num++;
 	}
