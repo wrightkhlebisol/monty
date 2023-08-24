@@ -25,8 +25,8 @@ int check_num(char *num)
 
 /**
  * push - Put item at top of stack
- * @head
- * @n
+ * @head: pointer to the head node pointer
+ * @line_number: the line number read
  *
  * Return
  */
@@ -76,6 +76,12 @@ void push(stack_t **head, unsigned int line_number)
 	*head = new_node;
 }
 
+/**
+ * pall - prints all elements present in the stack
+ * @line_number: line number read
+ *
+ * Return: void
+ */
 void pall(stack_t **head, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *temp = *head;
@@ -88,21 +94,30 @@ void pall(stack_t **head, __attribute__((unused)) unsigned int line_number)
 }
 
 /**
-void pop(void)
+ * pop - remove element from the top of the stack
+ * @head: pointer to head node pointer
+ * @line_number: the line number read
+ *
+ * Return: void
+ */
+void pop(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp = NULL;
 
-	if (head == NULL)
+	if ((*head) == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
+	}
 
 	temp = *head;
 	*head = temp->next;
-	temp->next->prev = NULL;
+	temp->prev = NULL;
 	temp->next = NULL;
 	free(temp);
-	exit(EXIT_SUCCESS);
 }
 
+/**
 void peak(void)
 {
 	if (head == NULL)
