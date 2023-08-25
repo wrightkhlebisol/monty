@@ -25,6 +25,7 @@ void exec_opcode(char *cmd, stack_t **head, unsigned int line_number)
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
+		{"pstr", pstr},
 		{NULL, NULL}
 	};
 
