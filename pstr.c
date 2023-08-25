@@ -7,15 +7,14 @@
  *
  * Return: void
  */
-void pstr(stack_t **head, unsigned int line_number)
+void pstr(stack_t **head, __attribute__((unused)) unsigned int line_number)
 {
 	int num;
 	stack_t *temp;
 
 	if ((*head) == NULL)
 	{
-		fprintf(stderr, "L%d: can't pstr, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		putchar('\n');
 	}
 
 	temp = (*head);
